@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperTuples", "SuperTuples.csproj", "{96CC254E-6A6F-40D8-A7AA-F35ED36223A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperTuples", "SuperTuples\SuperTuples.csproj", "{96CC254E-6A6F-40D8-A7AA-F35ED36223A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperTuples.Test", "..\SuperTuples.Test\SuperTuples.Test.csproj", "{D2FA3295-F623-42D8-AA6B-22E88AEEF2EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperTuples.Test", "SuperTuples.Test\SuperTuples.Test.csproj", "{D2FA3295-F623-42D8-AA6B-22E88AEEF2EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
