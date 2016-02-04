@@ -48,10 +48,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingleSupleTests.cs" />
     <Compile Include="TravisTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuperTuples\SuperTuples.csproj">
+      <Project>{96CC254E-6A6F-40D8-A7AA-F35ED36223A5}</Project>
+      <Name>SuperTuples</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
