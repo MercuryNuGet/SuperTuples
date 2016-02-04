@@ -1,5 +1,7 @@
 # Super Tuples
 
+[![Build Status](https://travis-ci.org/MercuryNuGet/SuperTuples.svg)](https://travis-ci.org/MercuryNuGet/SuperTuples)
+
 An abstract replacement for .net Tuples.
 
 ## Key Features
