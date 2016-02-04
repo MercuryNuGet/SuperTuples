@@ -26,6 +26,14 @@ namespace SuperTuples.Test
                 .Act((_, data) => new IntSuple(data.value))
                 .Assert("value of #value can be read back", (suple, data) => Assert.AreEqual(data.value, suple.Value))
                );
+
+            Spec("new Suple<string>(\"#value\")"
+                .ArrangeNull()
+                .With(new { value = "abc" })
+                .With(new { value = "def" })
+                .Act((_, data) => new StringSuple(data.value))
+                .Assert("value of \"#value\" can be read back", (suple, data) => Assert.AreEqual(data.value, suple.Value))
+               );
         }
 
         public class IntSuple : Suple<int>
@@ -35,6 +43,15 @@ namespace SuperTuples.Test
             {
             }
             public int Value { get { return Item1; } }
+        }
+
+        public class StringSuple : Suple<string>
+        {
+            public StringSuple(string value)
+                : base(value)
+            {
+            }
+            public string Value { get { return Item1; } }
         }
     }
 }
