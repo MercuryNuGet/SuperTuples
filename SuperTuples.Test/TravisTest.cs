@@ -12,7 +12,7 @@ namespace SuperTuples.Test
                 .With(new { x = 1, y = 1, expected = 2 })
                 .With(new { x = 3, y = 4, expected = 7 })
                 .Act((_, data) => data.x + data.y)
-                .Assert((_, data, actual) => Assert.AreEqual(data.expected, actual))
+                .Assert((actual, data) => Assert.AreEqual(data.expected, actual))
                 );
         }
     }
