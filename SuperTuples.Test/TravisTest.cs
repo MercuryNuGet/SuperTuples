@@ -9,8 +9,10 @@ namespace SuperTuples.Test
         {
             Spec("Travis mercury test case 1"
                 .ArrangeNull()
-                .Act(_ => _)
-                .Assert(_ => Assert.Fail("Failure from mercury test"))
+                .With(new { x = 1, y = 1, expected = 2 })
+                .With(new { x = 3, y = 4, expected = 7 })
+                .Act((_, data) => data.x + data.y)
+                .Assert((_, data, actual) => Assert.AreEqual(data.expected, actual))
                 );
         }
     }
