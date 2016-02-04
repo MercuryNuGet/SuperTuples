@@ -1,0 +1,9 @@
+language: csharp
+solution: SuperTuples.sln
+install:
+  - nuget restore SuperTuples.sln
+  - nuget install NUnit.Runners -Version 3.0.1 -OutputDirectory testrunner
+script:
+  - xbuild /p:Configuration=Release SuperTuples.sln
+  - mono ./testrunner/NUnit.Runners.3.0.1/tools/nunit-console.exe ./SuperTuples.Test/bin/Release/SuperTuples.Test.dll
+  
