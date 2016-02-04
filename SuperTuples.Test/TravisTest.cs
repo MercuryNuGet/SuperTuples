@@ -1,14 +1,17 @@
 ﻿using NUnit.Framework;
+using Mercury;
 
 namespace SuperTuples.Test
 {
-    [TestFixture]
-    public sealed class TravisTest
+    public sealed class TravisTest : SpecificationByMethod
     {
-        [Test]
-        public void Test()
+        protected override void Cases()
         {
-            Assert.Pass();
+            Spec("Travis mercury test case 1"
+                .ArrangeNull()
+                .Act(_ => _)
+                .Assert(_ => Assert.Fail("Failure from mercury test"))
+                );
         }
     }
 }
