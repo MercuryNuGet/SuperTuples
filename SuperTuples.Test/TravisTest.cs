@@ -8,7 +8,7 @@ namespace SuperTuples.Test
         [Test]
         public void Test()
         {
-            Assert.Pass();
+            Assert.Fail("See test fail");
         }
     }
 }
