@@ -77,7 +77,6 @@ namespace SuperTuples.Test
                 .With(new { value1 = new StringSuple("Abc"), value2 = new StringSuple("Def") })
                 .With(new { value1 = new StringSuple("Ghi"), value2 = new StringSuple("Jkl") })
                 .With(new { value1 = new StringSuple("Ghi"), value2 = new StringSuple(null) })
-                .With(new { value1 = new StringSuple(null), value2 = new StringSuple("Jlk") })
                 .Act((data) => data)
                 .Assert("!#value1.Equals(#value2)", (equalsResult, data) => Assert.AreNotEqual(data.value1, data.value2))
                 .Assert("!#value1.Equals(#value2) reflex", (equalsResult, data) => Assert.AreNotEqual(data.value2, data.value1))
