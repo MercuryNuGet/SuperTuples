@@ -14,9 +14,20 @@
         public override bool Equals(object obj)
         {
             if (obj == null) return false;
+            if (GetType() != obj.GetType()) return false;
             var other = obj as Suple<T>;
             if (other == null) return false;
-            return _item1.Equals(other._item1);
+            return Equals(_item1, other._item1);
+        }
+
+        public override int GetHashCode()
+        {
+            return _item1 != null ? _item1.GetHashCode() : 0;
+        }
+
+        public override string ToString()
+        {
+            return "(" + (_item1 != null ? _item1.ToString() : "null") + ")";
         }
     }
 }
