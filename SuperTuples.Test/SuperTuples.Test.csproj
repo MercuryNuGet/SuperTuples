@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleSupleTests.cs" />
+    <Compile Include="TypeSpecAssertExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
