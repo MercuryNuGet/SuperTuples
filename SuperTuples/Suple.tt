@@ -15,12 +15,21 @@ namespace SuperTuples
 <#for(int i=1;i<=n;i++){#>
         private readonly T<#=i#> _item<#=i#>;
 <#}#>
+        private readonly int? _cachedHash;
 
         protected Suple(<#=string.Join(", ", range.Select(x => "T" + x + " item" + x))#>)
         {
 <#for(int i=1;i<=n;i++){#>
             _item<#=i#> = item<#=i#>;
 <#}#>
+        }
+
+		protected Suple(<#=string.Join(", ", range.Select(x => "T" + x + " item" + x))#>, SupleHash hashMode)
+        {
+<#for(int i=1;i<=n;i++){#>
+            _item<#=i#> = item<#=i#>;
+<#}#>
+            _cachedHash = CalculateHashCode();
         }
 
 <#for(int i=1;i<=n;i++){#>
@@ -37,6 +46,11 @@ namespace SuperTuples
         }
 
         public override int GetHashCode()
+        {
+			return _cachedHash ?? CalculateHashCode();
+        }
+
+        private int CalculateHashCode()
         {
 		    int hashcode = 0;
 <#for(int i=1;i<=n;i++){
