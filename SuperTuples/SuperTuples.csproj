@@ -46,6 +46,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Suple.tt</DependentUpon>
     </Compile>
+    <Compile Include="SupleHash.cs" />
     <Compile Include="SupleHelpers.cs" />
   </ItemGroup>
   <ItemGroup>

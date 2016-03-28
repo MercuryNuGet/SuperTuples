@@ -3,10 +3,17 @@
     public abstract class Suple<T1>
     {
         private readonly T1 _item1;
+        private readonly int? _cachedHash;
 
         protected Suple(T1 item1)
         {
             _item1 = item1;
+        }
+
+		protected Suple(T1 item1, SupleHash hashMode)
+        {
+            _item1 = item1;
+            _cachedHash = CalculateHashCode();
         }
 
         protected T1 Item1 { get { return _item1; } }
@@ -21,6 +28,11 @@
         }
 
         public override int GetHashCode()
+        {
+			return _cachedHash ?? CalculateHashCode();
+        }
+
+        private int CalculateHashCode()
         {
 		    int hashcode = 0;
             hashcode += _item1 != null ? _item1.GetHashCode() : 0;
@@ -37,11 +49,19 @@
     {
         private readonly T1 _item1;
         private readonly T2 _item2;
+        private readonly int? _cachedHash;
 
         protected Suple(T1 item1, T2 item2)
         {
             _item1 = item1;
             _item2 = item2;
+        }
+
+		protected Suple(T1 item1, T2 item2, SupleHash hashMode)
+        {
+            _item1 = item1;
+            _item2 = item2;
+            _cachedHash = CalculateHashCode();
         }
 
         protected T1 Item1 { get { return _item1; } }
@@ -57,6 +77,11 @@
         }
 
         public override int GetHashCode()
+        {
+			return _cachedHash ?? CalculateHashCode();
+        }
+
+        private int CalculateHashCode()
         {
 		    int hashcode = 0;
             hashcode += _item1 != null ? _item1.GetHashCode() : 0;
