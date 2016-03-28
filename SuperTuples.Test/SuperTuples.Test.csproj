@@ -31,12 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Mercury">
-      <HintPath>..\packages\Mercury.0.0.12-prerelease\lib\net40\Mercury.dll</HintPath>
+    <Reference Include="Mercury, Version=0.0.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Mercury.0.0.13-prerelease\lib\net40\Mercury.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Mercury.0.0.12-prerelease\lib\net40\nunit.framework.dll</HintPath>
+      <HintPath>..\packages\Mercury.0.0.13-prerelease\lib\net40\nunit.framework.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
