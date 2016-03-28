@@ -40,8 +40,10 @@ namespace SuperTuples
         {
             if (obj == null) return false;
             if (GetType() != obj.GetType()) return false;
-            var other = obj as <#=type#>;
-            if (other == null) return false;
+            var other = (<#=type#>) obj;
+            if (_cachedHash != null &&
+                other._cachedHash != null &&
+                _cachedHash != other._cachedHash) return false;
             return <#=string.Join(" && ", range.Select(x => "Equals(_item"+x+", other._item"+x+")"))#>;
         }
 

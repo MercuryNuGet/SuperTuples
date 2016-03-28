@@ -22,8 +22,10 @@
         {
             if (obj == null) return false;
             if (GetType() != obj.GetType()) return false;
-            var other = obj as Suple<T1>;
-            if (other == null) return false;
+            var other = (Suple<T1>) obj;
+            if (_cachedHash != null &&
+                other._cachedHash != null &&
+                _cachedHash != other._cachedHash) return false;
             return Equals(_item1, other._item1);
         }
 
@@ -71,8 +73,10 @@
         {
             if (obj == null) return false;
             if (GetType() != obj.GetType()) return false;
-            var other = obj as Suple<T1, T2>;
-            if (other == null) return false;
+            var other = (Suple<T1, T2>) obj;
+            if (_cachedHash != null &&
+                other._cachedHash != null &&
+                _cachedHash != other._cachedHash) return false;
             return Equals(_item1, other._item1) && Equals(_item2, other._item2);
         }
 
