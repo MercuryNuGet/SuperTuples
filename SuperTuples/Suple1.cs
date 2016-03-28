@@ -1,33 +1,35 @@
 ﻿namespace SuperTuples
 {
-    public abstract class Suple<T>
+    public abstract class Suple<T1>
     {
-        private readonly T _item1;
+        private readonly T1 _item1;
 
-        protected Suple(T item1)
+        protected Suple(T1 item1)
         {
             _item1 = item1;
         }
 
-        protected T Item1 { get { return _item1; } }
+        protected T1 Item1 { get { return _item1; } }
 
         public override bool Equals(object obj)
         {
             if (obj == null) return false;
             if (GetType() != obj.GetType()) return false;
-            var other = obj as Suple<T>;
+            var other = obj as Suple<T1>;
             if (other == null) return false;
             return Equals(_item1, other._item1);
         }
 
         public override int GetHashCode()
         {
-            return _item1 != null ? _item1.GetHashCode() : 0;
+		    int hashcode = 0;
+            hashcode += _item1 != null ? _item1.GetHashCode() : 0;
+			return hashcode;
         }
 
         public override string ToString()
         {
-            return "(" + (_item1 != null ? _item1.ToString() : "null") + ")";
+            return "(" + SupleHelpers.NullString(_item1) + ")";
         }
     }
 
@@ -51,24 +53,22 @@
             if (GetType() != obj.GetType()) return false;
             var other = obj as Suple<T1, T2>;
             if (other == null) return false;
-            return Equals(_item1, other._item1) &&
-                Equals(_item2, other._item2);
+            return Equals(_item1, other._item1) && Equals(_item2, other._item2);
         }
 
         public override int GetHashCode()
         {
-            var hash = 0;
-            hash += _item1 != null ? _item1.GetHashCode() : 0;
-            hash += _item2 != null ? _item2.GetHashCode() : 0;
-            return hash;
+		    int hashcode = 0;
+            hashcode += _item1 != null ? _item1.GetHashCode() : 0;
+            hashcode *= 31;
+            hashcode += _item2 != null ? _item2.GetHashCode() : 0;
+			return hashcode;
         }
 
         public override string ToString()
         {
-            return "(" +
-                (_item1 != null ? _item1.ToString() : "null") +
-                ", " + (_item2 != null ? _item2.ToString() : "null") +
-                ")";
+            return "(" + SupleHelpers.NullString(_item1) + ", " + SupleHelpers.NullString(_item2) + ")";
         }
     }
+
 }

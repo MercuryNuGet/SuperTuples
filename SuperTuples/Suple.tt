@@ -1,0 +1,58 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+namespace SuperTuples
+{
+<#for(int n = 1; n <= 2; n++){
+  var range = Enumerable.Range(1, n);
+  var type = "Suple<" + string.Join(", ", range.Select(x => "T" + x)) + ">";
+#>
+    public abstract class <#=type#>
+    {
+<#for(int i=1;i<=n;i++){#>
+        private readonly T<#=i#> _item<#=i#>;
+<#}#>
+
+        protected Suple(<#=string.Join(", ", range.Select(x => "T" + x + " item" + x))#>)
+        {
+<#for(int i=1;i<=n;i++){#>
+            _item<#=i#> = item<#=i#>;
+<#}#>
+        }
+
+<#for(int i=1;i<=n;i++){#>
+        protected T<#=i#> Item<#=i#> { get { return _item<#=i#>; } }
+<#}#>
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            if (GetType() != obj.GetType()) return false;
+            var other = obj as <#=type#>;
+            if (other == null) return false;
+            return <#=string.Join(" && ", range.Select(x => "Equals(_item"+x+", other._item"+x+")"))#>;
+        }
+
+        public override int GetHashCode()
+        {
+		    int hashcode = 0;
+<#for(int i=1;i<=n;i++){
+  if(i>1){#>
+            hashcode *= 31;
+<#  }#>
+            hashcode += _item<#=i#> != null ? _item<#=i#>.GetHashCode() : 0;
+<#}#>
+			return hashcode;
+        }
+
+        public override string ToString()
+        {
+            return "(" + <#=string.Join(" + \", \" + ", range.Select(x => "SupleHelpers.NullString(_item" + x + ")"))#> + ")";
+        }
+    }
+
+<#}#>
+}
