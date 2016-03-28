@@ -3,29 +3,27 @@ using NUnit.Framework;
 
 namespace SuperTuples.Test
 {
-    public sealed class DoubleSupleTests : SpecificationByMethod
+    public sealed class DoubleSupleTests : MercurySuite
     {
-        protected override void Cases()
+        protected override void Specifications()
         {
-            Spec("Double Suple"
+            Specs += "Double Suple"
                 .Arrange()
                 .With(typeof(Suple<string, string>))
                 .With(typeof(Suple<int, int>))
                 .With(typeof(Suple<int, string>))
-                .AssertStandardSupleTypeRestrictions()
-                );
+                .AssertStandardSupleTypeRestrictions();
 
-            Spec("new Suple<int, int>(#value1, #value2)"
+            Specs += "new Suple<int, int>(#value1, #value2)"
                 .Arrange()
                 .With(new { value1 = 1, value2 = 2 })
                 .With(new { value1 = 4, value2 = 5 })
                 .Act((data) => new IntSuple(data.value1, data.value2))
                 .Assert("value of Value1 #value1 can be read back", (suple, data) => Assert.AreEqual(data.value1, suple.Value1))
                 .Assert("value of Value2 #value1 can be read back", (suple, data) => Assert.AreEqual(data.value2, suple.Value2))
-                .Assert("to string", (suple, data) => Assert.AreEqual("(" + data.value1 + ", " + data.value2 + ")", suple.ToString()))
-               );
+                .Assert("to string", (suple, data) => Assert.AreEqual("(" + data.value1 + ", " + data.value2 + ")", suple.ToString()));
 
-            Spec("new Suple<string, string>()"
+            Specs += "new Suple<string, string>()"
                 .Arrange()
                 .With(new { value1 = "abc", value2 = "def", expected = "(abc, def)" })
                 .With(new { value1 = "def", value2 = "ghi", expected = "(def, ghi)" })
@@ -34,10 +32,9 @@ namespace SuperTuples.Test
                 .Act((data) => new StringSuple(data.value1, data.value2))
                 .Assert("value of can be read back", (suple, data) => Assert.AreEqual(data.value1, suple.Value1))
                 .Assert("value of can be read back", (suple, data) => Assert.AreEqual(data.value2, suple.Value2))
-                .Assert("to string", (suple, data) => Assert.AreEqual(data.expected, suple.ToString()))
-               );
+                .Assert("to string", (suple, data) => Assert.AreEqual(data.expected, suple.ToString()));
 
-            Spec("new Suple<string, int>()"
+            Specs += "new Suple<string, int>()"
                 .Arrange()
                 .With(new { value1 = "abc", value2 = 5, expected = "(abc, 5)" })
                 .With(new { value1 = "def", value2 = 6, expected = "(def, 6)" })
@@ -45,10 +42,9 @@ namespace SuperTuples.Test
                 .Act((data) => new StringIntSuple(data.value1, data.value2))
                 .Assert("value of can be read back", (suple, data) => Assert.AreEqual(data.value1, suple.Value1))
                 .Assert("value of can be read back", (suple, data) => Assert.AreEqual(data.value2, suple.Value2))
-                .Assert("to string", (suple, data) => Assert.AreEqual(data.expected, suple.ToString()))
-               );
+                .Assert("to string", (suple, data) => Assert.AreEqual(data.expected, suple.ToString()));
 
-            Spec("Non equality:"
+            Specs += "Non equality:"
                 .Arrange()
                 .With(new { value1 = new IntSuple(1, 3), value2 = new IntSuple(2, 3) })
                 .With(new { value1 = new IntSuple(3, 4), value2 = new IntSuple(1, 4) })
@@ -56,26 +52,23 @@ namespace SuperTuples.Test
                 .Act((data) => data)
                 .Assert("!#value1.Equals(#value2)", (equalsResult, data) => Assert.AreNotEqual(data.value1, data.value2))
                 .Assert("!#value1.Equals(#value2) reflex", (equalsResult, data) => Assert.AreNotEqual(data.value2, data.value1))
-                .Assert("of hashcodes !#value1.GetHashCode() != #value2.GetHashCode()", (equalsResult, data) => Assert.AreNotEqual(data.value1.GetHashCode(), data.value2.GetHashCode()))
-               );
+                .Assert("of hashcodes !#value1.GetHashCode() != #value2.GetHashCode()", (equalsResult, data) => Assert.AreNotEqual(data.value1.GetHashCode(), data.value2.GetHashCode()));
 
-            Spec("Equality new Suple<int, int>(#value)"
+            Specs += "Equality new Suple<int, int>(#value)"
                .Arrange()
                .With(new { value1 = 1, value2 = 2 })
                .With(new { value1 = 2, value2 = 3 })
                .Act((data) => new IntSuple(data.value1, data.value2).Equals(new IntSuple(data.value1, data.value2)))
-               .Assert((equalsResult, data) => Assert.IsTrue(equalsResult))
-              );
+               .Assert((equalsResult, data) => Assert.IsTrue(equalsResult));
 
-            Spec("Equality of hashcode new Suple<int, int>(#value)"
+            Specs += "Equality of hashcode new Suple<int, int>(#value)"
                .Arrange()
                .With(new { value1 = 1, value2 = 2 })
                .With(new { value1 = 2, value2 = 3 })
                .Act((data) => new { hashCode1 = new IntSuple(data.value1, data.value2).GetHashCode(), hashCode2 = new IntSuple(data.value1, data.value2).GetHashCode() })
-               .Assert((hashcodes, data) => Assert.AreEqual(hashcodes.hashCode1, hashcodes.hashCode2))
-              );
+               .Assert((hashcodes, data) => Assert.AreEqual(hashcodes.hashCode1, hashcodes.hashCode2));
 
-            Spec("Non Equality new Suple<int>(#value)"
+            Specs += "Non Equality new Suple<int>(#value)"
                .Arrange()
                .With(new { value = new IntSuple(1, 2) })
                .With(new { value = new IntSuple(2, 3) })
@@ -85,10 +78,9 @@ namespace SuperTuples.Test
                .Assert("to object", (suple, data) => Assert.AreNotEqual(suple, new object()))
                .Assert("from object", (suple, data) => Assert.AreNotEqual(new object(), suple))
                .Assert("to descendant type", (suple, data) => Assert.AreNotEqual(suple, new AlienIntSuple(data.value.Value1, data.value.Value2)))
-               .Assert("from descendant type", (suple, data) => Assert.AreNotEqual(new AlienIntSuple(data.value.Value1, data.value.Value2), suple))
-              );
+               .Assert("from descendant type", (suple, data) => Assert.AreNotEqual(new AlienIntSuple(data.value.Value1, data.value.Value2), suple));
 
-            Spec("Non equality string:"
+            Specs += "Non equality string:"
                 .Arrange()
                 .With(new { value1 = new StringSuple("Abc", "b"), value2 = new StringSuple("Def", "b") })
                 .With(new { value1 = new StringSuple("Ghi", "c"), value2 = new StringSuple("Jkl", "c") })
@@ -98,8 +90,7 @@ namespace SuperTuples.Test
                 .Act((data) => data)
                 .Assert("!#value1.Equals(#value2)", (equalsResult, data) => Assert.AreNotEqual(data.value1, data.value2))
                 .Assert("!#value1.Equals(#value2) reflex", (equalsResult, data) => Assert.AreNotEqual(data.value2, data.value1))
-                .Assert("of hashcodes !#value1.GetHashCode() != #value2.GetHashCode()", (equalsResult, data) => Assert.AreNotEqual(data.value1.GetHashCode(), data.value2.GetHashCode()))
-               );
+                .Assert("of hashcodes !#value1.GetHashCode() != #value2.GetHashCode()", (equalsResult, data) => Assert.AreNotEqual(data.value1.GetHashCode(), data.value2.GetHashCode()));
         }
 
         public class IntSuple : Suple<int, int>
