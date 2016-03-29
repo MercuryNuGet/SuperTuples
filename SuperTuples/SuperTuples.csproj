@@ -69,8 +69,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>cd $(ProjectDir)NuGet\
-nuget pack Package.nuspec</PostBuildEvent>
+    <PostBuildEvent>if $(ConfigurationName) == NuGet cd $(ProjectDir)NuGet\
+if $(ConfigurationName) == NuGet nuget pack Package.nuspec</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
