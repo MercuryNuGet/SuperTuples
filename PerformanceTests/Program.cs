@@ -17,6 +17,9 @@ namespace PerformanceTests
                 Bench(() => TupleEquals());
                 Bench(() => UncachedSupleEquals());
                 Bench(() => CachedSupleEquals());
+                Bench(() => TupleNotEquals());
+                Bench(() => UncachedSupleNotEquals());
+                Bench(() => CachedSupleNotEquals());
                 Console.WriteLine();
             }
         }
@@ -28,6 +31,13 @@ namespace PerformanceTests
             Run(a, b);
         }
 
+        private static void UncachedSupleNotEquals()
+        {
+            object a = new UnCachedSuple(1, 2, 3);
+            object b = new UnCachedSuple(1, 2, 4);
+            Run(a, b);
+        }
+
         private static void CachedSupleEquals()
         {
             object a = new CachedSuple(1, 2, 3);
@@ -35,10 +45,24 @@ namespace PerformanceTests
             Run(a, b);
         }
 
+        private static void CachedSupleNotEquals()
+        {
+            object a = new CachedSuple(1, 2, 3);
+            object b = new CachedSuple(1, 2, 4);
+            Run(a, b);
+        }
+
         private static void TupleEquals()
         {
             object a = Tuple.Create(1, 2, 3);
             object b = Tuple.Create(1, 2, 3);
+            Run(a, b);
+        }
+
+        private static void TupleNotEquals()
+        {
+            object a = Tuple.Create(1, 2, 3);
+            object b = Tuple.Create(1, 2, 4);
             Run(a, b);
         }
 
