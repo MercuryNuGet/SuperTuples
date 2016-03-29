@@ -1,22 +1,33 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperTuples", "SuperTuples\SuperTuples.csproj", "{96CC254E-6A6F-40D8-A7AA-F35ED36223A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SuperTuples.Test", "SuperTuples.Test\SuperTuples.Test.csproj", "{D2FA3295-F623-42D8-AA6B-22E88AEEF2EE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{70E0F881-B1C4-4885-AAD6-36843006E1B6}"
+	ProjectSection(SolutionItems) = preProject
+		SuperTuples\NuGet\Package.nuspec = SuperTuples\NuGet\Package.nuspec
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		NuGet|Any CPU = NuGet|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{96CC254E-6A6F-40D8-A7AA-F35ED36223A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{96CC254E-6A6F-40D8-A7AA-F35ED36223A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96CC254E-6A6F-40D8-A7AA-F35ED36223A5}.NuGet|Any CPU.ActiveCfg = NuGet|Any CPU
+		{96CC254E-6A6F-40D8-A7AA-F35ED36223A5}.NuGet|Any CPU.Build.0 = NuGet|Any CPU
 		{96CC254E-6A6F-40D8-A7AA-F35ED36223A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96CC254E-6A6F-40D8-A7AA-F35ED36223A5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D2FA3295-F623-42D8-AA6B-22E88AEEF2EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D2FA3295-F623-42D8-AA6B-22E88AEEF2EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2FA3295-F623-42D8-AA6B-22E88AEEF2EE}.NuGet|Any CPU.ActiveCfg = NuGet|Any CPU
 		{D2FA3295-F623-42D8-AA6B-22E88AEEF2EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2FA3295-F623-42D8-AA6B-22E88AEEF2EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection

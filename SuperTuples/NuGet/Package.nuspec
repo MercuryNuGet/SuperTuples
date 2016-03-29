@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SuperTuples</id>
+    <version>0.0.1-prerelease</version>
+    <authors>Alan Evans</authors>
+    <owners>Mercury</owners>
+    <!--
+    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>    
+    -->
+    <title>Mercury Super Tuples</title>
+    <projectUrl>https://github.com/MercuryNuGet/SuperTuples/</projectUrl>
+    <iconUrl>http://mercurynuget.github.io/Mercury/images/Mercury_128.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Inheritable tuples with protected members, correct equals contract and optional cacheable hashcodes.</description>
+    <releaseNotes>
+0.0.1 Suples of up to 8 generic parameters
+    </releaseNotes>
+    <copyright>Copyright 2015</copyright>
+    <tags>Tuple Immutable Equals GetHashCode</tags>
+    <dependencies>
+    </dependencies>
+  </metadata>
+</package>
