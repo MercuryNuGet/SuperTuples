@@ -7,29 +7,37 @@ namespace SuperTuples.Test
     {
         protected override void Specifications()
         {
-            const int expectedHash = 1062386622;
+            const int expectedHash = -32;
 
             Specs += "When calculating hash, uses an unchecked environment"
-                .Arrange(() => new TrippleString("a", "b", "c"))
+                .Arrange(() => new HashOverflow())
                 .Act(sut => sut.GetHashCode())
                 .Assert(r => Assert.AreEqual(expectedHash, r));
 
             Specs += "When pre-calculating hash, uses an unchecked environment"
-                .Arrange(() => new TrippleStringCached("a", "b", "c"))
+                .Arrange(() => new HashOverflowCached())
                 .Act(sut => sut.GetHashCode())
                 .Assert(r => Assert.AreEqual(expectedHash, r));
         }
 
-        public class TrippleString : Suple<string, string, string>
+        public class MaxIntHash
         {
-            public TrippleString(string a, string b, string c) : base(a, b, c)
+            public override int GetHashCode()
+            {
+                return int.MaxValue;
+            }
+        }
+
+        public class HashOverflow : Suple<MaxIntHash, MaxIntHash>
+        {
+            public HashOverflow() : base(new MaxIntHash(), new MaxIntHash())
             {
             }
         }
 
-        public class TrippleStringCached : Suple<string, string, string>
+        public class HashOverflowCached : Suple<MaxIntHash, MaxIntHash>
         {
-            public TrippleStringCached(string a, string b, string c) : base(a, b, c, SupleHash.Cached)
+            public HashOverflowCached() : base(new MaxIntHash(), new MaxIntHash(), SupleHash.Cached)
             {
             }
         }
