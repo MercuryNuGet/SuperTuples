@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>SuperTuples</id>
-    <version>0.0.1-prerelease</version>
+    <version>1.0.0</version>
     <authors>Alan Evans</authors>
     <owners>Mercury</owners>
     <!--
@@ -14,7 +14,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Inheritable tuples with protected members, correct equals contract and optional cacheable hashcodes.</description>
     <releaseNotes>
-0.0.1 Suples of up to 8 generic parameters
+1.0.0 Suples of up to 8 generic parameters
     </releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>Tuple Immutable Equals GetHashCode</tags>
