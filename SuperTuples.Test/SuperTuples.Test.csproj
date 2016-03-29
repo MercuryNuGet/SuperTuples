@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CachedHashEqualsEfficienciesTests.cs" />
     <Compile Include="DoubleSupleTests.cs" />
     <Compile Include="HashCacheTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,10 +8,10 @@ namespace SuperTuples.Test
         protected override void Specifications()
         {
             Specs += "When not caching the hash"
-                .ArrangeNull()
+                .Arrange()
                 .With(new Mutable(1))
                 .With(new Mutable(2))
-                .Act((_, m) =>
+                .Act(m =>
                 {
                     var ms = new MutableSuple(m);
                     int hash1 = ms.GetHashCode();
@@ -22,10 +22,10 @@ namespace SuperTuples.Test
                 .Assert(", hash can change", (hashes, m) => Assert.AreNotEqual(hashes.hash1, hashes.hash2));
 
             Specs += "When caching the hash"
-                .ArrangeNull()
+                .Arrange()
                 .With(new Mutable(1))
                 .With(new Mutable(2))
-                .Act((_, m) =>
+                .Act(m =>
                 {
                     var ms = new MutableSupleCachedHash(m);
                     int hash1 = ms.GetHashCode();
