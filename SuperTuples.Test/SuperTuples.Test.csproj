@@ -59,6 +59,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleSupleTests.cs" />
     <Compile Include="TypeSpecAssertExtensions.cs" />
+    <Compile Include="UncheckedBlockTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

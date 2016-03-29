@@ -36,9 +36,12 @@
 
         private int CalculateHashCode()
         {
-		    int hashcode = 0;
-            hashcode += _item1 != null ? _item1.GetHashCode() : 0;
-			return hashcode;
+		    unchecked
+			{
+		        int hashcode = 0;
+                hashcode += _item1 != null ? _item1.GetHashCode() : 0;
+			    return hashcode;
+		    }
         }
 
         public override string ToString()
@@ -87,11 +90,14 @@
 
         private int CalculateHashCode()
         {
-		    int hashcode = 0;
-            hashcode += _item1 != null ? _item1.GetHashCode() : 0;
-            hashcode *= 31;
-            hashcode += _item2 != null ? _item2.GetHashCode() : 0;
-			return hashcode;
+		    unchecked
+			{
+		        int hashcode = 0;
+                hashcode += _item1 != null ? _item1.GetHashCode() : 0;
+                hashcode *= 31;
+                hashcode += _item2 != null ? _item2.GetHashCode() : 0;
+			    return hashcode;
+		    }
         }
 
         public override string ToString()
@@ -130,8 +136,10 @@
         {
             if (obj == null) return false;
             if (GetType() != obj.GetType()) return false;
-            var other = obj as Suple<T1, T2, T3>;
-            if (other == null) return false;
+            var other = (Suple<T1, T2, T3>) obj;
+            if (_cachedHash != null &&
+                other._cachedHash != null &&
+                _cachedHash != other._cachedHash) return false;
             return Equals(_item1, other._item1) && Equals(_item2, other._item2) && Equals(_item3, other._item3);
         }
 
@@ -142,13 +150,16 @@
 
         private int CalculateHashCode()
         {
-		    int hashcode = 0;
-            hashcode += _item1 != null ? _item1.GetHashCode() : 0;
-            hashcode *= 31;
-            hashcode += _item2 != null ? _item2.GetHashCode() : 0;
-            hashcode *= 31;
-            hashcode += _item3 != null ? _item3.GetHashCode() : 0;
-			return hashcode;
+		    unchecked
+			{
+		        int hashcode = 0;
+                hashcode += _item1 != null ? _item1.GetHashCode() : 0;
+                hashcode *= 31;
+                hashcode += _item2 != null ? _item2.GetHashCode() : 0;
+                hashcode *= 31;
+                hashcode += _item3 != null ? _item3.GetHashCode() : 0;
+			    return hashcode;
+		    }
         }
 
         public override string ToString()
