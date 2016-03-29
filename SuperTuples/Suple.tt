@@ -54,14 +54,17 @@ namespace SuperTuples
 
         private int CalculateHashCode()
         {
-		    int hashcode = 0;
+		    unchecked
+			{
+		        int hashcode = 0;
 <#for(int i=1;i<=n;i++){
   if(i>1){#>
-            hashcode *= 31;
+                hashcode *= 31;
 <#  }#>
-            hashcode += _item<#=i#> != null ? _item<#=i#>.GetHashCode() : 0;
+                hashcode += _item<#=i#> != null ? _item<#=i#>.GetHashCode() : 0;
 <#}#>
-			return hashcode;
+			    return hashcode;
+		    }
         }
 
         public override string ToString()
