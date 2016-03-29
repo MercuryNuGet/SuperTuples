@@ -14,7 +14,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Inheritable tuples with protected members, correct equals contract and optional cacheable hashcodes.</description>
     <releaseNotes>
-0.0.1 Suples of up to 3 generic parameters
+0.0.1 Suples of up to 8 generic parameters
     </releaseNotes>
     <copyright>Copyright 2015</copyright>
     <tags>Tuple Immutable Equals GetHashCode</tags>

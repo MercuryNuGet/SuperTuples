@@ -6,7 +6,7 @@
 <#@ output extension=".cs" #>
 namespace SuperTuples
 {
-<#for(int n = 1; n <= 3; n++){
+<#for(int n = 1; n <= 8; n++){
   var range = Enumerable.Range(1, n);
   var type = "Suple<" + string.Join(", ", range.Select(x => "T" + x)) + ">";
 #>
